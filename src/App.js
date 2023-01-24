@@ -7,7 +7,7 @@ import AddTransaction from './components/AddTransaction.js'
 //named import using {}
 import {IncomeExpenses} from './components/IncomeExpenses.js'
 import {GlobalProvider} from './context/GlobalState.js'
-
+import {ToggleContext} from './context/GlobalState.js'
 import './App.css';
 
 function App() {
@@ -23,20 +23,25 @@ function App() {
 
   return (
     <GlobalProvider>
+    
     <div>
      <Header/>
      <div className="container">
        <Balance/>
        <IncomeExpenses/>
-       <h3>Transcaction History</h3> 
-       <button className={toggleHistory===true? 'btn-close':'btn'} onClick={handleToggleHistory}>{toggleHistory===true? 'Close History':'Show'}</button>
-      {toggleHistory && <TransactionList/>}
+       <ToggleContext.Provider value={{toggle,setToggle}}>
+        <h3>Transcaction History</h3> 
+        <button className={toggleHistory===true? 'btn-close':'btn'} onClick={handleToggleHistory}>{toggleHistory===true? 'Close History':'Show'}</button>
+        {toggleHistory && <TransactionList/>}
        
-      <h3>Add New Transcaction</h3> 
-       <button className={toggle===true? 'btn-close':'btn'} onClick={handleToggle}>{toggle===true? 'Close Add':'Show'}</button>
-      {toggle && <AddTransaction/>} 
-     </div>
+        <h3>Add New Transcaction</h3>   
+        <button className={toggle===true? 'btn-close':'btn'} onClick={handleToggle}>{toggle===true? 'Cancel Add':'Show'}</button>
+        {toggle && <AddTransaction/>}
+
+      </ToggleContext.Provider>
+      </div>
     </div>
+    
     </GlobalProvider>
   );
 }

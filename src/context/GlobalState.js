@@ -14,6 +14,7 @@ const initialState={
 
 //create context
 export const GlobalContext = createContext(initialState);
+export const ToggleContext = createContext(null); //toggle add transaction section
 
 //context provider component
 //whatever wrapped in rovider is children, destructuring children{children}

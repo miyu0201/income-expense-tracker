@@ -1,9 +1,11 @@
 import React ,{useState,useContext} from 'react'
 import {GlobalContext} from '../context/GlobalState.js'
+import {ToggleContext} from '../context/GlobalState.js'
 
 export default function AddTransaction() {
     const [text,setText] = useState('');
     const [amount,setAmount] = useState(0);
+   const {toggle, setToggle} =  useContext(ToggleContext)
 
     const {addTransaction} = useContext(GlobalContext)
 
@@ -17,6 +19,7 @@ export default function AddTransaction() {
       }
 
       addTransaction(newTransaction)
+      setToggle(!toggle)
      }
      else(alert("please enter subject and amount!"))
      
