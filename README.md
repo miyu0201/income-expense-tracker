@@ -1,7 +1,7 @@
 # Income-Expense Tracker
 
 
-## Demo URL:https://app.netlify.com/sites/incomeexpensetracker001/settings/domain
+ Demo URL:incomeexpensetracker001.netlify.app
 <br>
 
 
